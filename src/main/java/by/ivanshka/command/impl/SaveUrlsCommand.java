@@ -39,7 +39,7 @@ public class SaveUrlsCommand implements Command {
         try {
             new FileReaderWriterJson<StringListWrapper>().write(filePath, new StringListWrapper(urls));
         } catch (IOException e) {
-            throw new CommandException(e.getMessage());
+            throw new CommandException(e.getMessage(), e);
         }
 
         CommandResult result = new CommandResult(String.format("URLs list saved to file \"%s\"", filePath));

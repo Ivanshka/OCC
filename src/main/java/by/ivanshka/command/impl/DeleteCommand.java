@@ -24,7 +24,7 @@ public class DeleteCommand implements Command {
         try{
             index= Integer.parseInt(args[0]) - 1;
         }
-        catch(NumberFormatException | ArrayIndexOutOfBoundsException e) {
+        catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             throw new CommandException("Can't delete item cause number is incorrect!");
         }
 

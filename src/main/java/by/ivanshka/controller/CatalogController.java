@@ -99,9 +99,9 @@ public class CatalogController {
                     final CatalogItem itemFromURL = networkService.getItemFromURL(rawUserInput);
                     storageService.addItem(itemFromURL);
                 }
-                catch(Exception e) {
+                catch (Exception e) {
                     System.out.println("Sorry, but an error has occurred when we tried to get an item!(\n" +
-                            "Try again or enter product data manually.\nDebug information:\n" + e.getMessage());
+                            "Try again or enter product data manually.\nError message:\n" + e.getMessage());
                     continue;
                 }
             } else
@@ -135,7 +135,7 @@ public class CatalogController {
 
             CommandContext context = new CommandContext(storageService, networkService);
 
-            if (args[0].equalsIgnoreCase("help")) {
+            if (args.length > 0 && args[0].equalsIgnoreCase("help")) {
                 System.out.println(command.getHelp());
                 return;
             }

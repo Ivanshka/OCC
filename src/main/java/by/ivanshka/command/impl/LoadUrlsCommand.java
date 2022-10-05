@@ -42,7 +42,7 @@ public class LoadUrlsCommand implements Command {
                 context.getStorageService().addItem(itemFromURL);
             }
         } catch (IOException e) {
-            throw new CommandException(e.getMessage());
+            throw new CommandException(e.getMessage(), e);
         }
 
         return Optional.of(new CommandResult("URLs list was loaded and specified!"));

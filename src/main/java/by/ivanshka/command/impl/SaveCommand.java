@@ -31,7 +31,7 @@ public class SaveCommand implements Command {
             new FileReaderWriterJson<CatalogItemListWrapper>().write(
                     filePath, new CatalogItemListWrapper(context.getStorageService().getItems()));
         } catch (IOException e) {
-            throw new CommandException(e.getMessage());
+            throw new CommandException(e.getMessage(), e);
         }
 
         CommandResult result = new CommandResult(String.format("List saved to file \"%s\"", filePath));

@@ -2,6 +2,7 @@ package by.ivanshka.service;
 
 import by.ivanshka.model.CatalogItem;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface ItemStorageService {
@@ -15,4 +16,6 @@ public interface ItemStorageService {
     double calculateTotalCost();
 
     void clearStorage();
+
+    void addItems(Collection<CatalogItem> items);
 }

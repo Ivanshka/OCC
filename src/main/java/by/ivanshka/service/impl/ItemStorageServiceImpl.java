@@ -6,6 +6,7 @@ import by.ivanshka.storage.ItemStorage;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Collection;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -35,6 +36,11 @@ public class ItemStorageServiceImpl implements ItemStorageService {
 
     public void clearStorage() {
         storage.getItems().clear();
+    }
+
+    @Override
+    public void addItems(Collection<CatalogItem> items) {
+        storage.addItems(items);
     }
 
     public int getItemsAmount() {

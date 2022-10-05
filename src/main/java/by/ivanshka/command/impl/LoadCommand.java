@@ -4,7 +4,6 @@ import by.ivanshka.command.Command;
 import by.ivanshka.command.CommandContext;
 import by.ivanshka.command.CommandResult;
 import by.ivanshka.exception.CommandException;
-import by.ivanshka.model.CatalogItem;
 import by.ivanshka.readerWriter.FileReaderWriterJson;
 import by.ivanshka.wrapper.CatalogItemListWrapper;
 
@@ -32,14 +31,12 @@ public class LoadCommand implements Command {
             CatalogItemListWrapper itemsWrapper = new FileReaderWriterJson<CatalogItemListWrapper>().read(
                     filePath, CatalogItemListWrapper.class);
 
-            for (CatalogItem item : itemsWrapper.getItems()) {
-                context.getStorageService().addItem(item);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            context.getStorageService().addItems(itemsWrapper.getItems());
 
-        return Optional.of(new CommandResult("Product list was loaded!"));
+            return Optional.of(new CommandResult("Product list was loaded!"));
+        } catch (IOException e) {
+            throw new CommandException(e.getMessage(), e);
+        }
     }
 
     @Override

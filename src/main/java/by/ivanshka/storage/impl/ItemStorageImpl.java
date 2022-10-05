@@ -5,6 +5,7 @@ import by.ivanshka.storage.ItemStorage;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Getter
@@ -18,6 +19,11 @@ public class ItemStorageImpl implements ItemStorage {
 
     public void addItem(CatalogItem item) {
         items.add(item);
+    }
+
+    @Override
+    public void addItems(Collection<CatalogItem> items) {
+        this.items.addAll(items);
     }
 
     public void removeItem(int index) {
